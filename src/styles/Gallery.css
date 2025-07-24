@@ -1,0 +1,74 @@
+.carousel-container {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  position: relative;
+}
+
+.media-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.media-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.carousel-slide img {
+  width: 100%;
+  height: auto;
+  background-size: cover;
+  background-position: center center;
+  object-fit: cover;
+  background-clip: border-box;
+}
+
+/* Diamond Indicators */
+.carousel-indicators {
+  /* border: 1px solid gold; */
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: max-content;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.diamond {
+  --dimensions: 0.7em;
+  width: var(--dimensions);
+  height: var(--dimensions);
+  transform: rotate(45deg);
+  border: 2px solid rgba(0, 0, 0, 0.423);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.diamond.active {
+  background: #fff;
+}
+
+.diamond.active span {
+  color: #000;
+}

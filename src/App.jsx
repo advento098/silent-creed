@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
-import "./App.css";
-import sample1 from "./assets/sample1.png";
+import { useEffect, useRef, useState } from "react";
+import "./styles/App.css";
+import "./styles/Gallery.css";
+import Gallery from "./components/Gallery";
 
 function App() {
   const images = import.meta.glob("./assets/images/img*.jpg", { eager: true });
   const imageList = Object.values(images);
-  console.log(imageList);
   const parentDiv = useRef(null);
   const [showSideBar, setShowSideBar] = useState(false);
 
@@ -143,14 +143,7 @@ function App() {
 
       <section id="media" className="section fade-in">
         <h2>Media</h2>
-        <div className="media-carousel">
-          {imageList.map((image, idx) => (
-            <div key={idx} className="carousel-slide">
-              <img src={image.default} alt={`media ${idx + 1}`} />
-              <div className="diamond-number">{idx + 1}</div>
-            </div>
-          ))}
-        </div>
+        <Gallery imageList={imageList} />
       </section>
 
       <section id="preorder" className="section preorder fade-in">
