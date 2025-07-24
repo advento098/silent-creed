@@ -9,12 +9,19 @@
   font-weight: 400;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #5c5c5c60;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --bg-color: #fffde4; /* Slight Cream */
+  --crim-red: #A50000;
+  --off-white: #eaeaea; /* Off-White */
+  --dark-slate-blue: #070707; /* Dark Slate Blue */
+  --gold: #d4af37; /* Gold */
+  --link-color: #b0b0b0; /* Light Gray */
 }
 
 * {
