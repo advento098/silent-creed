@@ -1,12 +1,13 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
 import sample1 from "./assets/sample1.png";
-import sample2 from "./assets/sample1.png";
-import sample3 from "./assets/sample1.png";
-import heroBg from "./assets/background.jpg";
 
 function App() {
+  const images = import.meta.glob("./assets/images/img*.jpg", { eager: true });
+  const imageList = Object.values(images);
+  console.log(imageList);
   const parentDiv = useRef(null);
+  const [showSideBar, setShowSideBar] = useState(false);
 
   useEffect(() => {
     const fadeElements = parentDiv.current
@@ -34,9 +35,7 @@ function App() {
   return (
     <div ref={parentDiv} className="App">
       <header className="hero" id="hero">
-        <div className="heroBackground">
-          <img src={heroBg} alt="silent-creed" />
-        </div>
+        <div className="heroBackground"></div>
         <div className="overlay"></div>
         <nav className="navbar">
           <div className="logo">Silent Creed</div>
@@ -56,9 +55,66 @@ function App() {
               </a>
             </li>
           </ul>
+          <button
+            onClick={() => setShowSideBar((prev) => !prev)}
+            className="burger-btn"
+          >
+            <span className="material-symbols-outlined burger-icon">
+              swords
+            </span>
+          </button>
         </nav>
+
+        <div className={`side-bar ${showSideBar ? "show" : ""}`}>
+          <div>
+            <button
+              onClick={() => setShowSideBar((prev) => !prev)}
+              className="burger-btn"
+            >
+              <span className="material-symbols-outlined burger-icon">
+                sword_rose
+              </span>
+            </button>
+            <ul className="side-bar-links">
+              <li>
+                <a
+                  onClick={() => setShowSideBar((prev) => !prev)}
+                  href="#about"
+                >
+                  About
+                </a>
+              </li>
+              <li>
+                <a
+                  onClick={() => setShowSideBar((prev) => !prev)}
+                  href="#features"
+                >
+                  Features
+                </a>
+              </li>
+              <li>
+                <a
+                  onClick={() => setShowSideBar((prev) => !prev)}
+                  href="#media"
+                >
+                  Media
+                </a>
+              </li>
+              <li>
+                <a
+                  onClick={() => setShowSideBar((prev) => !prev)}
+                  href="#preorder"
+                  className="cta"
+                >
+                  Pre-Order
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
         <div className="hero-content fade-in">
-          <h1>Rise from the Shadows</h1>
+          <h1>Silent Creed</h1>
           <p>Forge your legacy in a world of chaos, secrets, and vengeance.</p>
           <a href="#trailer" className="btn-primary">
             Watch Trailer
@@ -87,10 +143,13 @@ function App() {
 
       <section id="media" className="section fade-in">
         <h2>Media</h2>
-        <div className="media-gallery">
-          <img src={sample1} alt="screenshot 1" />
-          <img src={sample2} alt="screenshot 2" />
-          <img src={sample3} alt="screenshot 3" />
+        <div className="media-carousel">
+          {imageList.map((image, idx) => (
+            <div key={idx} className="carousel-slide">
+              <img src={image.default} alt={`media ${idx + 1}`} />
+              <div className="diamond-number">{idx + 1}</div>
+            </div>
+          ))}
         </div>
       </section>
 
