@@ -39,7 +39,7 @@ export default function Gallery({ imageList }) {
           onClick={handlePrev}
           className={`left-button ${currentIndex === 0 ? "hide" : ""}`}
         >
-          <span class="material-symbols-outlined">arrow_back</span>
+          <span className="material-symbols-outlined">arrow_back</span>
         </button>
         <button
           onClick={handleNext}
@@ -47,7 +47,7 @@ export default function Gallery({ imageList }) {
             currentIndex === imageList.length - 1 ? "hide" : ""
           }`}
         >
-          <span class="material-symbols-outlined">arrow_forward</span>
+          <span className="material-symbols-outlined">arrow_forward</span>
         </button>
       </div>
       <div className="media-carousel" onScroll={handleScroll} ref={scrollRef}>
