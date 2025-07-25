@@ -5,6 +5,11 @@
   position: relative;
 }
 
+.carousel-container button {
+  display: none;
+}
+
+
 .media-carousel {
   display: flex;
   overflow-x: auto;

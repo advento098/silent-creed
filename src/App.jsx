@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "./styles/App.css";
 import "./styles/Gallery.css";
 import "./styles/Contact.css";
+import "./styles/Large-screen.css";
 import logo from "./assets/sc-logo.svg";
 import Gallery from "./components/Gallery";
 import Contact from "./components/Contact";
@@ -43,7 +44,7 @@ function App() {
         <nav className="navbar">
           <div className="logo">
             <img src={logo} alt="sc-logo"></img>
-            <h1>Silent Creed</h1>
+            <h1>Anthaira Studios</h1>
           </div>
           <ul className="nav-links">
             <li>
@@ -58,6 +59,11 @@ function App() {
             <li>
               <a href="#preorder" className="cta">
                 Pre-Order
+              </a>
+            </li>
+            <li>
+              <a href="#contact" className="cta">
+                Contact Us
               </a>
             </li>
           </ul>

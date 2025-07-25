@@ -11,8 +11,45 @@ export default function Gallery({ imageList }) {
     setCurrentIndex(index);
   };
 
+  const scrollToIndex = (index) => {
+    const width = scrollRef.current.offsetWidth;
+    scrollRef.current.scrollTo({
+      left: index * width,
+      behavior: "smooth",
+    });
+    setCurrentIndex(index);
+  };
+
+  const handlePrev = () => {
+    if (currentIndex > 0) {
+      scrollToIndex(currentIndex - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentIndex < imageList.length - 1) {
+      scrollToIndex(currentIndex + 1);
+    }
+  };
+
   return (
     <div className="carousel-container">
+      <div className="buttons">
+        <button
+          onClick={handlePrev}
+          className={`left-button ${currentIndex === 0 ? "hide" : ""}`}
+        >
+          <span class="material-symbols-outlined">arrow_back</span>
+        </button>
+        <button
+          onClick={handleNext}
+          className={`right-button ${
+            currentIndex === imageList.length - 1 ? "hide" : ""
+          }`}
+        >
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </button>
+      </div>
       <div className="media-carousel" onScroll={handleScroll} ref={scrollRef}>
         {imageList.map((image, idx) => (
           <div key={idx} className="carousel-slide">
