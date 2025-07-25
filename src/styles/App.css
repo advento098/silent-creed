@@ -45,6 +45,20 @@ section {
 }
 
 .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  width: 2em;
+  object-fit: contain;
+  background: transparent;
+  aspect-ratio: 1;
+  margin-right: 0.5em;
+}
+
+.logo > h1 {
   font-family: "Cinzel", sans-serif;
   font-size: 1.5rem;
   color: var(--bg-color);

@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../ui/Button";
+import emailjs from "@emailjs/browser";
 
 export default function Contact({ id }) {
   const [formData, setFormData] = useState({
@@ -9,7 +10,7 @@ export default function Contact({ id }) {
     message: "",
   });
 
-  const [isSent, setIsSent] = useState(false);
+  const [isSent, setIsSent] = useState(" ");
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -18,16 +19,49 @@ export default function Contact({ id }) {
     }));
   };
 
-  const handleSubmit = () => {
-    // console.log("Collected data:", formData);
-    // Call your email API here (e.g., EmailJS, Nodemailer backend)
+  const sendEmail = (onSuccess, onError) => {
+    const { name, email, subject, message } = formData;
+    if (!name.trim() || !email.trim() || !subject.trim() || !message.trim()) {
+      setIsSent("Please complete all fields");
+      return;
+    }
 
-    setIsSent(true);
-    // Clear after send
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    emailjs
+      .send(
+        "service_o6nxh54",
+        "template_rrwqfcp",
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        "70zcNCIby157J202Z"
+      )
+      .then((result) => {
+        if (onSuccess) onSuccess(result);
+      })
+      .catch((error) => {
+        if (onError) onError(error);
+      });
+  };
+
+  const handleSubmit = () => {
+    sendEmail(
+      (res) => {
+        console.log(res.text);
+        setIsSent("Message sent successfully");
+        // Clear after send
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      },
+      (err) => {
+        console.error(err.text);
+        setIsSent("Something went wrong");
+      }
+    );
 
     setTimeout(() => {
-      setIsSent(false);
+      setIsSent(" ");
     }, 5000);
   };
 
@@ -45,7 +79,7 @@ export default function Contact({ id }) {
         <input
           type="text"
           name="email"
-          placeholder="Email"
+          placeholder="Your email"
           value={formData.email}
           onChange={handleChange}
         />
@@ -64,7 +98,9 @@ export default function Contact({ id }) {
         value={formData.message}
         onChange={handleChange}
       />
-      <p>{isSent ? "Your message is sent!" : ""}</p>
+      <div>
+        <p>{isSent}</p>
+      </div>
       <Button handler={handleSubmit}>Send</Button>
     </section>
   );

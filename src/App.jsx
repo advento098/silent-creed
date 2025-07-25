@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import "./styles/App.css";
 import "./styles/Gallery.css";
 import "./styles/Contact.css";
+import logo from "./assets/sc-logo.svg";
 import Gallery from "./components/Gallery";
 import Contact from "./components/Contact";
-import Button from "./ui/Button";
 
 function App() {
   const images = import.meta.glob("./assets/images/img*.jpg", { eager: true });
@@ -41,7 +41,10 @@ function App() {
         <div className="heroBackground"></div>
         <div className="overlay"></div>
         <nav className="navbar">
-          <div className="logo">Silent Creed</div>
+          <div className="logo">
+            <img src={logo} alt="sc-logo"></img>
+            <h1>Silent Creed</h1>
+          </div>
           <ul className="nav-links">
             <li>
               <a href="#about">About</a>
