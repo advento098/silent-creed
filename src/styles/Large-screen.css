@@ -1,0 +1,59 @@
+/* 600px */
+@media (min-width: 37.5em) {
+  .hero-content h1 {
+    font-size: clamp(5rem, 10dvw, 8rem);
+  }
+}
+
+/* 900px */
+@media (min-width: 56.25em) {
+  .burger-btn {
+    display: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: min(5dvw, 4rem);
+    padding: 1rem;
+  }
+
+  .carousel-container {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .buttons {
+    display: flex;
+    position: absolute;
+    z-index: 20;
+    width: 95%;
+    height: max-content;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+  }
+
+  .buttons > button {
+    display: flex;
+    background: transparent;
+    border-style: none;
+    padding: auto 0;
+  }
+
+  .buttons span {
+    font-size: min(3vw, 3rem);
+  }
+
+  .right-button {
+    margin-left: auto;
+  }
+
+  .left-button {
+    left: 0;
+  }
+
+  .right-button.hide,
+  .left-button.hide {
+    display: none;
+  }
+}
