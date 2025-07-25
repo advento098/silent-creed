@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import "./styles/App.css";
 import "./styles/Gallery.css";
+import "./styles/Contact.css";
 import Gallery from "./components/Gallery";
+import Contact from "./components/Contact";
+import Button from "./ui/Button";
 
 function App() {
   const images = import.meta.glob("./assets/images/img*.jpg", { eager: true });
@@ -109,6 +112,15 @@ function App() {
                   Pre-Order
                 </a>
               </li>
+              <li>
+                <a
+                  onClick={() => setShowSideBar((prev) => !prev)}
+                  href="#contact"
+                  className="cta"
+                >
+                  Contact Us
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -156,6 +168,7 @@ function App() {
 
       <footer className="footer">
         <p>&copy; 2025 Anthaira Studios. All rights reserved.</p>
+        <Contact id="contact"></Contact>
       </footer>
     </div>
   );

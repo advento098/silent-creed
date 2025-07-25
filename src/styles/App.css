@@ -25,7 +25,7 @@ h2 {
 section {
   padding: 4rem 2rem;
   text-align: center;
-  background-color: var(--dark-slate-blue);
+  background-color: var(--dark-slate);
 }
 
 /* Navbar */
@@ -37,9 +37,9 @@ section {
   justify-content: space-between;
   padding: 1rem 2rem;
   z-index: 10;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
-  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px); /* Safari support */
+  background: rgba(253, 255, 209, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
@@ -49,6 +49,11 @@ section {
   font-size: 1.5rem;
   color: var(--bg-color);
   font-weight: bold;
+  transition: color 0.3s linear;
+}
+
+.logo:hover {
+  color: var(--crim-red);
 }
 
 .burger-btn:nth-of-type(1),
@@ -59,6 +64,7 @@ section {
 .burger-btn {
   background: transparent;
   border-style: none;
+  color: var(--crim-red);
   width: 2.2rem;
   aspect-ratio: 1;
   padding: 0;
@@ -68,13 +74,14 @@ section {
   visibility: hidden;
   opacity: 0;
   padding: 3em;
-  position: absolute;
+  position: fixed;
   width: 100dvw;
   height: 100dvh;
-  background-color: #0e0e0e;
+  background-color: var(--dark-slate);
   z-index: 100;
   transition: opacity 0.2s ease-in-out;
 }
+
 .side-bar.show {
   visibility: visible;
   opacity: 1;
@@ -246,6 +253,7 @@ section {
 .footer {
   text-align: center;
   padding: 2rem;
+  height: 80dvh;
   font-size: 0.875rem;
   background: #111;
 }
